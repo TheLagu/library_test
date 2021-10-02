@@ -1,6 +1,7 @@
 <?php
 return [
     'settings' => [
+        'displayErrorDetails' => true,
         'cache_dir' => __DIR__ . '/../var/cache',
         'db' => [
             'host' => 'database',

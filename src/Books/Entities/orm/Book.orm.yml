@@ -1,0 +1,20 @@
+Library\Books\Entities\Book:
+  type: entity
+  repositoryClass: Library\Books\Repositories\BooksRepository
+  table: books
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    uuid:
+      type: string
+    title:
+      type: string
+    pages:
+      type: int
+    topic:
+      type: string
+    created_at:
+      type: datetime_immutable
