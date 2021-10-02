@@ -17,4 +17,14 @@ class BooksRepository extends EntityRepository
     {
         return $this->findOneBy(['encodedId' => $encodedId]);
     }
+
+    public function persist(Book $book): void
+    {
+        $this->_em->persist($book);
+    }
+
+    public function flush(): void
+    {
+        $this->_em->flush();
+    }
 }

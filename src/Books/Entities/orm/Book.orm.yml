@@ -8,12 +8,16 @@ Library\Books\Entities\Book:
       generator:
         strategy: AUTO
   fields:
-    uuid:
+    encoded_id:
+      type: string
+    isbn:
       type: string
     title:
       type: string
     pages:
-      type: int
+      type: integer
+    description:
+      type: string
     topic:
       type: string
     created_at:

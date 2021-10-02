@@ -7,6 +7,7 @@ class BookDto
     private ?string $encoded_id;
     private ?string $isbn;
     private ?string $title;
+    private ?string $description;
     private ?int $pages;
     private ?string $topic;
 
@@ -16,6 +17,7 @@ class BookDto
         $dto->encoded_id = $data['encoded_id']?? null;
         $dto->isbn = $data['isbn']?? null;
         $dto->title = $data['title']?? null;
+        $dto->description = $data['description']?? null;
         $dto->pages = $data['pages']?? null;
         $dto->topic = $data['topic']?? null;
 
@@ -45,5 +47,10 @@ class BookDto
     public function getTopic(): ?string
     {
         return $this->topic;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
     }
 }

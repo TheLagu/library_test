@@ -1,0 +1,7 @@
+book_test:
+  table_name: "books"
+  isbn: "0123456789"
+  title: "Alicia"
+  pages: 287
+  topic: "paranoia"
+  description: "Alicia dentro de un laberinto..."

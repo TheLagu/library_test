@@ -5,7 +5,7 @@ RUN apt-get -y update
 # Install git
 RUN apt-get -y install git libpq-dev
 
-RUN docker-php-ext-install pdo pdo_pgsql
+RUN docker-php-ext-install pdo pdo_pgsql php7.4-pgsql
 
 RUN ln -s /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
 RUN sed -i -e 's/;extension=pgsql/extension=pgsql/' /usr/local/etc/php/php.ini

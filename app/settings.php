@@ -8,7 +8,7 @@ return [
             'user' => 'admin',
             'pass' => 'password',
             'dbname' => 'database',
-            'port' => 47001,
+            'port' => 5432,
         ],
         'phinx_settings' => [
             'paths' => [

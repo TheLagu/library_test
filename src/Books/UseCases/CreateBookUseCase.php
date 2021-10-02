@@ -19,18 +19,19 @@ class CreateBookUseCase
     public function __invoke(BookDto $dto): Book
     {
         if ($this->booksRepository->existsByISBN($dto->getIsbn())) {
-            throw new BookAlreadyExistsException();
+            throw new BookAlreadyExistsException('ISBN already exists');
         }
 
         $book = Book::create(
             $dto->getTitle(),
             $dto->getIsbn(),
             $dto->getPages(),
-            $dto->getTopic()
+            $dto->getTopic(),
+            $dto->getDescription(),
         );
 
         $this->booksRepository->persist($book);
-        $this->booksRepository->flush($book);
+        $this->booksRepository->flush();
 
         return $book;
     }

@@ -11,26 +11,28 @@ class Book
     use UuidTrait;
 
     private int $id;
-    private string $encodedId;
+    private string $encoded_id;
     private string $title;
     private string $isbn;
     private int $pages;
+    private ?string $description;
     private ?string $topic;
     private DateTimeImmutable $created_at;
 
     private function __construct(string $title, string $isbn, int $pages)
     {
-        $this->encodedId = Uuid::uuid4()->toString();
+        $this->encoded_id = Uuid::uuid4()->toString();
         $this->title = $title;
         $this->isbn = $isbn;
         $this->pages = $pages;
         $this->created_at = new DateTimeImmutable();
     }
 
-    public static function create(string $title, string $isbn, int $pages, ?string $topic = null): Book
+    public static function create(string $title, string $isbn, int $pages, ?string $topic = null, ?string $description = null): Book
     {
         $entity = new self($title, $isbn, $pages);
         $entity->topic = $topic;
+        $entity->description = $description;
 
         return $entity;
     }
@@ -42,7 +44,7 @@ class Book
 
     public function getEncodedId(): string
     {
-        return $this->encodedId;
+        return $this->encoded_id;
     }
 
     public function getIsbn(): string
@@ -68,5 +70,10 @@ class Book
     public function getCreatedAt(): DateTimeImmutable
     {
         return $this->created_at;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
     }
 }
