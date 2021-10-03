@@ -26,4 +26,9 @@ class BooksRepository extends EntityRepository
     {
         $this->_em->flush();
     }
+
+    public function remove(Book $book): void
+    {
+        $this->_em->remove($book);
+    }
 }
