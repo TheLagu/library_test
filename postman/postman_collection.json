@@ -1,0 +1,82 @@
+{
+	"variables": [],
+	"info": {
+		"name": "doofinder",
+		"_postman_id": "b800b876-aa67-92d5-0538-6fbeef4e4dca",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create book",
+			"request": {
+				"url": "localhost:47000/books",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"isbn\":\"99999999999\",\n\t\"title\":\"James Bond\",\n\t\"pages\":\"99999999\",\n\t\"topic\":\"lerele\",\n\t\"description\":\"larala\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get books",
+			"request": {
+				"url": "localhost:47000/books/search",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"isbn\":\"99999999999\",\n\t\"title\":\"James Bond\",\n\t\"pages\":\"99999999\",\n\t\"topic\":\"lerele\",\n\t\"description\":\"larala\",\n\t\"query_page\":2,\n\t\"query_limit\":3\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update book",
+			"request": {
+				"url": "localhost:47000/books/2217543a-6ff5-4232-90ea-a7639066ccfe",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"isbn\":\"99999999999\",\n\t\"title\":\"James Bond\",\n\t\"pages\":\"99999999\",\n\t\"topic\":\"lerele\",\n\t\"description\":\"larala\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete book",
+			"request": {
+				"url": "localhost:47000/books/19d58dd2-89fa-434e-aa9d-fb15607e641d",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

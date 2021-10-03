@@ -3,9 +3,8 @@ FROM php:7.4-fpm
 RUN apt-get -y update
 
 # Install git
-RUN apt-get -y install git libpq-dev
-
-RUN docker-php-ext-install pgsql pdo pdo_pgsql
+RUN apt-get -y install git libpq-dev zlib1g-dev libzip-dev unzip
+RUN docker-php-ext-install pgsql pdo pdo_pgsql zip
 
 RUN ln -s /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
 RUN sed -i -e 's/;extension=pgsql/extension=pgsql/' /usr/local/etc/php/php.ini

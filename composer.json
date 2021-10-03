@@ -19,7 +19,8 @@
     "phpunit/phpunit": "^7.4"
   },
   "scripts": {
-    "db_create_structure": "vendor/bin/phinx seed:run -e dev --configuration phinx.php -s DatabaseStructure"
+    "db_create_structure": "vendor/bin/phinx seed:run -e dev --configuration phinx.php -s DatabaseStructure",
+    "test": "docker exec fpm /application/vendor/bin/phpunit /application/tests/"
   },
   "autoload": {
     "psr-4": {

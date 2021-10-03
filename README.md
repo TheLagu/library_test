@@ -14,15 +14,14 @@ Gestión de libros de una biblioteca.
 ### Requisitos:
 Tener instalado `docker` (https://www.docker.com/) y `git` (https://git-scm.com/).
 
-Clonar el repositorio de github.
+
+Clonar el repositorio y levantar la API.
 ```
 git clone https://github.com/TheLagu/library_test
-```
-Para levantar la API simplemente hay que ejecutar un comando
-```
+cd library_test
 make library
 ```
-y se levantará un docker en `localhost:47000`.
+Esto levantará la API en un docker en el puerto 4700, `localhost:47000`.
 
 Este tarjet de makefile ejecuta los siguientes comandos:
 ```
@@ -34,6 +33,11 @@ docker exec fpm bash -c 'cd /application/ && vendor/bin/phinx seed:run -e dev --
 Para parar los servicios levantados en docker
 ```
 make stop
+```
+
+Para ejecutar los tests unitarios y funcionales
+```
+composer test
 ```
 ---
 
@@ -330,7 +334,7 @@ Endpoint para obtener un libro de BBDD.
 
 
 ## Anotaciones importantes
-- Me falta por revisar los logs/warnings de docker
+- Solo he creado los tests unitarios y funcionales de un endpoint, por falta de tiempo.
 - Hubiese estado bien hacer la documentación "chula" con OpenApi y Swagger.
 - Estaría bien tener una pipeline que automatizase la ejecución de los tests antes de hacer el push.
 - Los errores de validación de parámetros deberían ser más concretos
@@ -339,4 +343,3 @@ Endpoint para obtener un libro de BBDD.
 - No he creado usuarios ni tokens, pero habría que limitar el uso de la API solo a personas autorizadas. (con JWT o lo que sea) Esta parte se puede hacer con un ApiGateway o mediante Middlewares.
 - Estaría bien tener PhpStan para tener un código más limpio (namespaces ordenados, código repetido,...) 
 - Habría que poner indices en los campos donde se hagan más búsquedas
-- Solo he creado los tests unitarios y funcionales de un endpoint, por falta de tiempo.
