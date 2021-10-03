@@ -5,8 +5,9 @@ namespace Library\Books\Entities;
 use DateTimeImmutable;
 use Library\Shared\Traits\UuidTrait;
 use Ramsey\Uuid\Uuid;
+use JsonSerializable;
 
-class Book
+class Book implements JsonSerializable
 {
     use UuidTrait;
 
@@ -84,5 +85,18 @@ class Book
     public function getDescription(): ?string
     {
         return $this->description;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'id' => $this->getEncodedId(),
+            'title' => $this->getTitle(),
+            'isbn' => $this->getIsbn(),
+            'pages' => $this->getPages(),
+            'description' => $this->getDescription(),
+            'topic' => $this->getTopic(),
+            'created_at' => $this->getCreatedAt()->format('Y-m-d H:i:s'),
+        ];
     }
 }
