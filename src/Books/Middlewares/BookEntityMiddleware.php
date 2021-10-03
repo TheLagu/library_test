@@ -1,13 +1,12 @@
 <?php
 
-namespace Library\Books\UseCases;
+namespace Library\Books\Middlewares;
 
-use Library\Books\Exceptions\BookNotFoundException;
 use Library\Books\Repositories\BooksRepository;
-use Library\Shared\Exceptions\UuidNotValidException;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Ramsey\Uuid\Uuid;
+use Slim\Http\StatusCode;
 
 class BookEntityMiddleware
 {
@@ -24,13 +23,19 @@ class BookEntityMiddleware
 
         if (!Uuid::isValid($encodedId))
         {
-            throw new UuidNotValidException('Invalid uuid ' . $encodedId);
+            return $response
+                ->withJson(['error' => 'Invalid uuid (' . $encodedId . ')'])
+                ->withStatus(StatusCode::HTTP_BAD_REQUEST);
         }
 
         $book = $this->booksRepository->findOneByEncodedId($encodedId);
         if (is_null($book)) {
-            throw new BookNotFoundException("Book {$encodedId} does not exists");
+            return $response
+                ->withJson(['error' => "Book {$encodedId} does not exists"])
+                ->withStatus(StatusCode::HTTP_BAD_REQUEST);
         }
+
+        $request = $request->withAttribute('book', $book);
 
         return $next($request, $response);
     }

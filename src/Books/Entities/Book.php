@@ -37,6 +37,15 @@ class Book
         return $entity;
     }
 
+    public function update(?string $title, ?string $isbn, ?int $pages, ?string $topic, ?string $description): void
+    {
+        $this->title = is_null($title)? $this->title : $title;
+        $this->isbn = is_null($isbn)? $this->isbn : $isbn;
+        $this->pages = is_null($pages)? $this->pages : $pages;
+        $this->topic = is_null($topic)? $this->topic : $topic;
+        $this->description = is_null($description)? $this->description : $description;
+    }
+
     public function getId(): int
     {
         return $this->id;

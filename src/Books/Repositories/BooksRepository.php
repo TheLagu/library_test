@@ -4,7 +4,6 @@ namespace Library\Books\Repositories;
 
 use Doctrine\ORM\EntityRepository;
 use Library\Books\Entities\Book;
-use Library\Books\Exceptions\BookNotFoundException;
 
 class BooksRepository extends EntityRepository
 {
@@ -15,7 +14,7 @@ class BooksRepository extends EntityRepository
 
     public function findOneByEncodedId(string $encodedId): ?Book
     {
-        return $this->findOneBy(['encodedId' => $encodedId]);
+        return $this->findOneBy(['encoded_id' => $encodedId]);
     }
 
     public function persist(Book $book): void
