@@ -13,9 +13,9 @@ services:
     ports:
       - '47001:5432'
 
-  library:
+  nginx:
     image: 'nginx:alpine'
-    container_name: library
+    container_name: nginx
     working_dir: /application
     volumes:
       - '.:/application'

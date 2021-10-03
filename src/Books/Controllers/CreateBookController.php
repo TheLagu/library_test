@@ -35,7 +35,7 @@ class CreateBookController
             $book = $this->useCase->__invoke(BookDto::createFromArray($params));
         } catch (BookAlreadyExistsException $e) {
             return $response
-                ->withJson(['error' => $e->getMessage()])
+                ->withJson(['error' => [$e->getMessage()]])
                 ->withStatus(StatusCode::HTTP_BAD_REQUEST);
         }
 

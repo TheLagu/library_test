@@ -31,7 +31,7 @@ class BookEntityMiddleware
         $book = $this->booksRepository->findOneByEncodedId($encodedId);
         if (is_null($book)) {
             return $response
-                ->withJson(['error' => "Book {$encodedId} does not exists"])
+                ->withJson(['error' => ["Book {$encodedId} does not exists"]])
                 ->withStatus(StatusCode::HTTP_BAD_REQUEST);
         }
 

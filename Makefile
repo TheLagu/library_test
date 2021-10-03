@@ -1,10 +1,16 @@
 
 library: library_container
-	@docker exec library bash -c 'cd /application/ && composer install';
+	@docker exec fpm bash -c 'cd /application/ && composer install';
+	@if [ ! -f "./.db_created" ]; then \
+		docker exec fpm bash -c 'cd /application/ && vendor/bin/phinx seed:run -e dev --configuration phinx.php -s DatabaseStructure'; \
+		if [ $$? -eq 0 ]; then \
+			touch .db_created; \
+		fi; \
+	fi
 
 library_container: requisites
-	@if [ "$$(docker ps | awk '{print $NF}' | grep -w 'api_books' |wc -l)" -eq "0" ];then \
-		docker-compose -f docker-compose.yml up -d library; \
+	@if [ "$$(docker ps -a | awk '{print $NF}' | grep -w 'nginx' |wc -l)" -eq "0" ];then \
+		docker-compose -f docker-compose.yml up -d nginx; \
 	fi
 
 requisites:
@@ -18,3 +24,6 @@ requisites:
 	    echo "No se ha encontrado el binario de docker (https://www.docker.com/community-edition#/download)"; \
 	    exit 1; \
 	fi
+
+stop:
+	@docker-compose -f docker-compose.yml stop;

@@ -1,0 +1,177 @@
+{
+	"variables": [],
+	"info": {
+		"name": "doofinder",
+		"_postman_id": "b800b876-aa67-92d5-0538-6fbeef4e4dca",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create book",
+			"request": {
+				"url": "localhost:47000/books",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"isbn\":\"9999999999\",\n\t\"title\":\"James Bond\",\n\t\"pages\":12,\n\t\"topic\":\"ficcion\",\n\t\"description\":\"Libro de ficción\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get books",
+			"request": {
+				"url": "localhost:47000/books/search",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "isbn",
+							"value": "1234567890",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Alicia en el país de las Maravillas",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "pages",
+							"value": "12123123",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "topic",
+							"value": "fantasia",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "query_page",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update book",
+			"request": {
+				"url": "localhost:47000/books/27603e2b-6b9d-4f65-8cd2-914dc1305b15",
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "isbn",
+							"value": "1234567890",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Alicia en el país de las Maravillas",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "pages",
+							"value": "12123123",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "topic",
+							"value": "fantasia",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Un libro que mola",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete book",
+			"request": {
+				"url": "localhost:47000/books/19d58dd2-89fa-434e-aa9d-fb15607e641d",
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "isbn",
+							"value": "1234567890",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Alicia en el país de las Maravillas",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "pages",
+							"value": "12123123",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "topic",
+							"value": "fantasia",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Un libro que mola",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

@@ -41,7 +41,7 @@ class BooksRepository extends EntityRepository
             $criteria,
             !is_null($sorting)? $sorting: ['id' => 'DESC'],
             !is_null($limit)? $limit: 10,
-            !is_null($page)? $page - 1 : 0,
+            !is_null($page)? ($page - 1) * $limit : 0,
         );
     }
 

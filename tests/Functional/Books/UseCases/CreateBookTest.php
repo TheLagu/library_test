@@ -91,7 +91,7 @@ class CreateBookTest extends FunctionalTestCase
 
         $body = json_decode($response->getBody(), true);
         $this->assertSame(StatusCode::HTTP_BAD_REQUEST, $response->getStatusCode());
-        $this->assertSame(['error' => 'ISBN already exists'], $body);
+        $this->assertSame(['error' => ['ISBN already exists']], $body);
     }
 
     public function testSuccess(): void

@@ -19,8 +19,7 @@
     "phpunit/phpunit": "^7.4"
   },
   "scripts": {
-    "db_create_structure": "vendor/bin/phinx seed:run -e dev --configuration phinx.php -s DatabaseStructure",
-    "reset-database": "docker exec -w /application fpm sh -c 'vendor/bin/phinx seed:run -e dev -s DataBaseReset && vendor/bin/phinx seed:run -e dev -s DataBaseDump && vendor/bin/phinx migrate -e dev && vendor/bin/phinx seed:run -e dev -s PermissionsSeeder && vendor/bin/phinx seed:run -e dev -s DataBaseSeeder'"
+    "db_create_structure": "vendor/bin/phinx seed:run -e dev --configuration phinx.php -s DatabaseStructure"
   },
   "autoload": {
     "psr-4": {
